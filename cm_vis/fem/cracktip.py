@@ -227,7 +227,7 @@ class CrackTipAnalyzer:
         plt.tight_layout()
         plt.show()
 
-    def analyze(self):
+    def analyze(self, showplots=True):
         """
         Perform the complete analysis: calculate raw and smoothed crack lengths, speed, and velocities,
         and plot the results.
@@ -243,8 +243,9 @@ class CrackTipAnalyzer:
         smoothed_velocities_x = self.calc_crack_velocity(0, use_smoothed=True)
         smoothed_velocities_y = self.calc_crack_velocity(1, use_smoothed=True)
 
-        self.plot_crack_info(raw_lengths, smoothed_lengths, raw_speeds, smoothed_speeds, 
-                             raw_velocities_x, raw_velocities_y, smoothed_velocities_x, smoothed_velocities_y)
+        if showplots:
+            self.plot_crack_info(raw_lengths, smoothed_lengths, raw_speeds, smoothed_speeds, 
+                                raw_velocities_x, raw_velocities_y, smoothed_velocities_x, smoothed_velocities_y)
 
     def save_to_csv(self, output_filepath=None):
         """
